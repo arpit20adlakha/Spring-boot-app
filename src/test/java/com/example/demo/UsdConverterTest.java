@@ -15,10 +15,11 @@ class UsdConverterTest {
     @Mock
     private ExchangeService service = Mockito.mock(ExchangeService.class);
 
-    private UsdConverter converter = new UsdConverter(service);
+    private UsdConverter converter;
 
     @BeforeEach
     void setUp() {
+       converter = new UsdConverter(service);
     }
 
     @AfterEach

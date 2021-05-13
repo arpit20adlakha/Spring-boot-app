@@ -1,21 +1,13 @@
 package com.example.demo;
 
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-@Data
+@AllArgsConstructor
 public class AirportInfo {
     private String name;
     private String code;
     private String stCode;
-
-    public AirportInfo(String name, String code, String stCode) {
-        this.name = name;
-        this.code = code;
-        this.stCode = stCode;
-    }
 
     public String getName() {
         return name;

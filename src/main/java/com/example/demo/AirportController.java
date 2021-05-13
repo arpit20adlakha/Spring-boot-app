@@ -1,9 +1,8 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -12,6 +11,10 @@ import java.util.Objects;
 
 @RestController
 public class AirportController {
+
+    @Autowired
+    private MoviesRepository moviesRepository;
+
     private List<AirportInfo> airportInfoList = new ArrayList<>();
     private static final String SERVICE_WARNING_MESSAGE = "Berlin Schönefeld is closed for service today";
 
@@ -28,4 +31,13 @@ public class AirportController {
         }
         return airportInfo;
     }
+
+    @PostMapping(path = "/movie/add", consumes = "application/json")
+    public @ResponseBody String addMovie(@RequestBody Movie movie) {
+        Movies mov = new Movies(movie.getName(), movie.getReleaseDate(), movie.getDuration(), null, movie.getRating());
+        moviesRepository.save(mov);
+        return "Saved check in db";
+    }
+
+
 }
