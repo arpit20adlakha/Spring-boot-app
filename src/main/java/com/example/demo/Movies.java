@@ -2,11 +2,13 @@ package com.example.demo;
 
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Transactional
 @Entity
 public class Movies implements Serializable {
     @Id
